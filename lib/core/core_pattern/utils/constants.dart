@@ -1,7 +1,9 @@
 // ignore_for_file: unnecessary_null_comparison, null_check_always_fails, deprecated_member_use
 import 'dart:developer';
-import 'package:flutter/material.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package_export.dart';
+import 'package:flutter/foundation.dart';
 
 // ignore: constant_identifier_names
 enum ViewState { IDLE, BUSY, RETRIEVED, ERROR }
@@ -52,7 +54,9 @@ class FormUtils {
 
 //
 printData(identifier, data) {
-  return log('===> $identifier <=== $data');
+  if (kDebugMode) {
+    return log('===> $identifier <=== $data');
+  }
 }
 
 extension CapExtension on String {
@@ -74,7 +78,7 @@ class Constants {
     return MediaQuery.of(context).size.width;
   }
 
-  static double buttonHeight = 50;
+  static double buttonHeight = 60.h;
 
   static const scrollerTransitionTime = 5;
 
@@ -114,4 +118,79 @@ Future getIntFromLocalStorage({required String name}) async {
 removeFromLocalStorage({required String name}) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.remove(name);
+}
+
+showErrorMsg({
+  cxt,
+  msg,
+}) {
+  Flushbar(
+    title: 'Alert',
+    message: msg,
+    duration: const Duration(seconds: 5),
+    flushbarPosition: FlushbarPosition.TOP,
+    backgroundColor: Colors.red,
+    titleColor: Colors.white,
+    messageColor: Colors.white,
+    //showProgressIndicator: true,
+    flushbarStyle: FlushbarStyle.FLOATING,
+    icon: const Icon(
+      Icons.info_outline,
+      color: Colors.white,
+    ),
+  ).show(cxt);
+}
+
+showWarningMsg({cxt, msg, email, password}) {
+  Flushbar(
+    title: 'Alert',
+    message: msg,
+    mainButton: InkWell(
+      onTap: () {
+        // navigateToRoute(
+        //     cxt,
+        //     ConfirmEmailAddressScreen(
+        //       email: email,
+        //       fromLogin: true,
+        //       password: password,
+        //     ));
+      },
+      child: const Text(
+        "Verify here",
+        style: TextStyle(color: Colors.white),
+      ),
+    ),
+    duration: const Duration(seconds: 5),
+    flushbarPosition: FlushbarPosition.TOP,
+    backgroundColor: Colors.yellowAccent.shade700,
+    titleColor: Colors.white,
+    messageColor: Colors.white,
+    //showProgressIndicator: true,
+    flushbarStyle: FlushbarStyle.FLOATING,
+    icon: const Icon(
+      Icons.info_outline,
+      color: Colors.white,
+    ),
+  ).show(cxt);
+}
+
+showSuccessMsg({
+  cxt,
+  msg,
+}) {
+  Flushbar(
+    title: 'Alert',
+    message: msg,
+    //   showProgressIndicator: true,
+    duration: const Duration(seconds: 5),
+    flushbarPosition: FlushbarPosition.TOP,
+    backgroundColor: Colors.green,
+    titleColor: Colors.white,
+    messageColor: Colors.white,
+    flushbarStyle: FlushbarStyle.FLOATING,
+    icon: const Icon(
+      Icons.done_rounded,
+      color: Colors.white,
+    ),
+  ).show(cxt);
 }

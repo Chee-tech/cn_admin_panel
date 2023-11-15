@@ -4,7 +4,7 @@ class AppColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color darkWhite = Color(0xFFFAFAFA);
   static const Color black = Color(0xFF000000);
-  static const Color primary = Color(0xff0027a6);
+  static const Color primary = Color.fromRGBO(3, 29, 84, 1);
   static const Color primaryLight = Color(0xff3F51B5);
   static const Color primaryDark = Color(0xff201A62);
   static const Color disable = Color(0xFFC4E6EB);

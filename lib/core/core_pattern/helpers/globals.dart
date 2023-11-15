@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../model/login_response_model.dart';
 import '../utils/constants.dart';
+import '../utils/package_export.dart';
 import 'endpoints.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -18,15 +19,11 @@ class AppGlobals {
 
   String? isLoggedIn;
   int? isViewed;
-
+  StopWatchTimer? stopWatchTimer;
   String? token = "";
   String? userId = "";
   String? userEmail = "";
   String? userPassword = "";
-  String? userPhone = "";
-  String? userAddress = "";
-  String? profileImage = "";
-  String? fullName = "";
 
   Future<void> init() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -34,10 +31,7 @@ class AppGlobals {
     userId = await getFromLocalStorage(name: "userId") ?? "";
     userEmail = await getFromLocalStorage(name: "userEmail") ?? "";
     userPassword = await getFromLocalStorage(name: "userPassword") ?? "";
-    userPhone = await getFromLocalStorage(name: "userPhone") ?? "";
-    userAddress = await getFromLocalStorage(name: "userAddress") ?? "";
-    profileImage = await getFromLocalStorage(name: "ProfileImage") ?? "";
-    fullName = await getFromLocalStorage(name: "FullName") ?? "";
+
     isViewed = preferences.getInt('onBoard');
     isLoggedIn = preferences.getString('isLoggedIn') ?? "";
     printData("token", token);
@@ -49,14 +43,15 @@ class AppGlobals {
   Future<void> login() async {
     String url = Endpoints.usersLoginUrl;
     var stingUrl = Uri.parse(Endpoints.baseUrl + url);
+    String userPassword = await getFromLocalStorage(name: "userPassword") ?? "";
     try {
       Map<String, String> headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       };
       final msg = jsonEncode({
-        "email": "cnticketstravels@gmail.com",
-        "password": "Chukwudi21",
+        "email": userEmail,
+        "password": userPassword,
       });
       http.Response response =
           await http.post(stingUrl, body: msg, headers: headers);

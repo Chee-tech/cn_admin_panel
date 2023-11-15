@@ -97,11 +97,13 @@ class DrawerListTile extends StatelessWidget {
     required this.title,
     required this.svgSrc,
     required this.press,
+    this.color,
   }) : super(key: key);
 
   final String title;
   final Widget svgSrc;
   final VoidCallback press;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -114,11 +116,11 @@ class DrawerListTile extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
             fontSize: 15,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.bold,
             fontStyle: FontStyle.normal,
-            color: Colors.black),
+            color: color ?? Colors.black),
       ),
     );
   }

@@ -11,7 +11,7 @@ String enumName(AppTheme anyEnum) {
 
 Map<AppTheme, ThemeData> appThemeData = {
   AppTheme.white: ThemeData(
-    fontFamily: "Poppins",
+    fontFamily: "Montserrat",
     dialogTheme: const DialogTheme(
         titleTextStyle: TextStyle(
       color: Colors.black,
@@ -37,15 +37,15 @@ Map<AppTheme, ThemeData> appThemeData = {
       titleLarge: TextStyle(
         color: Colors.white,
         fontSize: 20.0,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       headlineMedium: TextStyle(
         color: Colors.black54,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       titleSmall: TextStyle(
         color: Colors.white70,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
         fontSize: 18.0,
       ),
     ),
@@ -85,40 +85,40 @@ Map<AppTheme, ThemeData> appThemeData = {
       titleLarge: TextStyle(
         color: Colors.grey,
         fontSize: 20.0,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       titleSmall: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
         fontSize: 18.0,
       ),
       headlineMedium: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       displaySmall: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       displayMedium: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       displayLarge: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       titleMedium: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       bodyMedium: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       bodyLarge: TextStyle(
         color: Colors.grey,
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
       labelSmall: TextStyle(
         color: Colors.grey,
